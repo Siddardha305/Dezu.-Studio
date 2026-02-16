@@ -23,7 +23,7 @@ export function useShowcaseAnimations(containerRef: RefObject<HTMLElement | null
     // Width: 100% -> 25% (0.2 -> 0.7)
     const width = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]) => {
+        ([e, p]: any) => {
             if (e < 1) {
                 return `${70 + e * 30}%`;
             } else {
@@ -39,7 +39,7 @@ export function useShowcaseAnimations(containerRef: RefObject<HTMLElement | null
     // Height: 100vh -> 35vh (0.2 -> 0.7)
     const height = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]) => {
+        ([e, p]: any) => {
             if (e < 1) {
                 return `${50 + e * 50}vh`;
             } else {
@@ -54,7 +54,7 @@ export function useShowcaseAnimations(containerRef: RefObject<HTMLElement | null
     // Border Radius: 0rem -> 2rem (0.2 -> 0.7)
     const borderRadius = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]) => {
+        ([e, p]: any) => {
             if (e < 1) {
                 return `${2 * (1 - e)}rem`;
             } else {
@@ -74,7 +74,7 @@ export function useShowcaseAnimations(containerRef: RefObject<HTMLElement | null
     // Left Gap: 14vw - 12.5vw = 1.5vw (Very small gap, almost flush left).
     const x = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]) => {
+        ([e, p]: any) => {
             if (e < 1) return "0vw";
             else {
                 if (p < 0.2) return "0vw";
@@ -88,7 +88,7 @@ export function useShowcaseAnimations(containerRef: RefObject<HTMLElement | null
     // Y Position: 0vh -> 25vh (0.2 -> 0.7)
     const y = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]) => {
+        ([e, p]: any) => {
             if (e < 1) return "0vh";
             else {
                 if (p < 0.2) return "0vh";
