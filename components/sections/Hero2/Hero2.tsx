@@ -14,7 +14,6 @@ export function Hero2() {
         <section ref={containerRef} className="relative h-[400vh] bg-[#1a0b2e]">
             <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-[#1a0b2e]">
 
-                {/* 1. Video Box Component */}
                 <ShowcaseVideo
                     width={width}
                     height={height}
@@ -23,10 +22,9 @@ export function Hero2() {
                     y={y}
                 />
 
-                {/* 2. Text Component */}
                 <ShowcaseText
                     opacity={textOpacity}
-                    x={textX}
+                    x={textX as MotionValue<string | number>}
                 />
 
             </div>
