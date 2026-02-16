@@ -3,106 +3,84 @@
 import { useScroll, useTransform, MotionValue } from "framer-motion";
 import { RefObject } from "react";
 
-export function useHero2Animations(
-  containerRef: RefObject<HTMLElement | null>
-) {
-  // 1. Entry Progress
-  const { scrollYProgress: entryProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "start start"],
-  });
+export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) {
 
-  // 2. Pinned Progress
-  const { scrollYProgress: pinnedProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+    const { scrollYProgress: entryProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "start start"],
+    });
 
-  // -----------------------------
-  // VIDEO ANIMATIONS
-  // -----------------------------
+    const { scrollYProgress: pinnedProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"],
+    });
 
-  const width: MotionValue<string> = useTransform(
-    [entryProgress, pinnedProgress],
-    ([e, p]) => {
-      if (e < 1) {
-        return `${70 + e * 30}%`;
-      } else {
-        if (p < 0.2) return "100%";
-        if (p > 0.7) return "25%";
-        const progress = (p - 0.2) / 0.5;
-        return `${100 - progress * 75}%`;
-      }
-    }
-  );
+    const width = useTransform(
+        [entryProgress, pinnedProgress],
+        ([e, p]) => {
+            if (e < 1) return `${70 + e * 30}%`;
+            if (p < 0.2) return "100%";
+            if (p > 0.7) return "25%";
+            const progress = (p - 0.2) / 0.5;
+            return `${100 - progress * 75}%`;
+        }
+    );
 
-  const height: MotionValue<string> = useTransform(
-    [entryProgress, pinnedProgress],
-    ([e, p]) => {
-      if (e < 1) {
-        return `${50 + e * 50}vh`;
-      } else {
-        if (p < 0.2) return "100vh";
-        if (p > 0.7) return "35vh";
-        const progress = (p - 0.2) / 0.5;
-        return `${100 - progress * 65}vh`;
-      }
-    }
-  );
+    const height = useTransform(
+        [entryProgress, pinnedProgress],
+        ([e, p]) => {
+            if (e < 1) return `${50 + e * 50}vh`;
+            if (p < 0.2) return "100vh";
+            if (p > 0.7) return "35vh";
+            const progress = (p - 0.2) / 0.5;
+            return `${100 - progress * 65}vh`;
+        }
+    );
 
-  const borderRadius: MotionValue<string> = useTransform(
-    [entryProgress, pinnedProgress],
-    ([e, p]) => {
-      if (e < 1) {
-        return `${2 * (1 - e)}rem`;
-      } else {
-        if (p < 0.2) return "0rem";
-        if (p > 0.7) return "2rem";
-        const progress = (p - 0.2) / 0.5;
-        return `${progress * 2}rem`;
-      }
-    }
-  );
+    const borderRadius = useTransform(
+        [entryProgress, pinnedProgress],
+        ([e, p]) => {
+            if (e < 1) return `${2 * (1 - e)}rem`;
+            if (p < 0.2) return "0rem";
+            if (p > 0.7) return "2rem";
+            const progress = (p - 0.2) / 0.5;
+            return `${progress * 2}rem`;
+        }
+    );
 
-  const x: MotionValue<string> = useTransform(
-    [entryProgress, pinnedProgress],
-    ([e, p]) => {
-      if (e < 1) return "0vw";
-      if (p < 0.2) return "0vw";
-      if (p > 0.7) return "-25vw";
-      const progress = (p - 0.2) / 0.5;
-      return `${progress * -25}vw`;
-    }
-  );
+    const x = useTransform(
+        [entryProgress, pinnedProgress],
+        ([e, p]) => {
+            if (e < 1) return "0vw";
+            if (p < 0.2) return "0vw";
+            if (p > 0.7) return "-25vw";
+            const progress = (p - 0.2) / 0.5;
+            return `${progress * -25}vw`;
+        }
+    );
 
-  const y: MotionValue<string> = useTransform(
-    [entryProgress, pinnedProgress],
-    () => "0vh"
-  );
+    const y = useTransform(() => "0vh");
 
-  // -----------------------------
-  // TEXT ANIMATIONS (FIXED TYPES)
-  // -----------------------------
+    const textOpacity = useTransform(
+        pinnedProgress,
+        [0.2, 0.4, 0.9, 1],
+        [0, 1, 1, 0]
+    );
 
-  const textOpacity: MotionValue<number> = useTransform(
-    pinnedProgress,
-    [0.2, 0.4, 0.9, 1],
-    [0, 1, 1, 0]
-  );
+    // FIXED LINE
+    const textX = useTransform(
+        pinnedProgress,
+        [0.2, 0.4],
+        ["50px", "0px"]
+    ) as MotionValue<string | number>;
 
-  const textX: MotionValue<string | number> = useTransform(
-    pinnedProgress,
-    [0.2, 0.4],
-    ["50px", "0px"]
-  );
-
-  return {
-    width,
-    height,
-    borderRadius,
-    x,
-    y,
-    textOpacity,
-    textX,
-  };
+    return {
+        width,
+        height,
+        borderRadius,
+        x,
+        y,
+        textOpacity,
+        textX
+    };
 }
