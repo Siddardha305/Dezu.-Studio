@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { MotionValue } from "framer-motion";
 import { ShowcaseVideo } from "./components/ShowcaseVideo";
 import { ShowcaseText } from "./components/ShowcaseText";
 import { useHero2Animations } from "./components/useHero2Animations";
@@ -25,7 +26,7 @@ export function Hero2() {
                 {/* 2. Text Component */}
                 <ShowcaseText
                     opacity={textOpacity}
-                    x={textX as any}
+                    x={textX as MotionValue<string | number>}
                 />
 
             </div>
