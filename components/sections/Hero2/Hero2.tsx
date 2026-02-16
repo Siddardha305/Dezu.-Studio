@@ -26,7 +26,7 @@ export function Hero2() {
                 {/* 2. Text Component */}
                 <ShowcaseText
                     opacity={textOpacity}
-                    x={textX as MotionValue<string | number>}
+                    x={textX}
                 />
 
             </div>

@@ -4,8 +4,8 @@ import { motion, MotionValue } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 interface ShowcaseTextProps {
-    opacity: MotionValue<number>;
-    x: MotionValue<string | number>;
+    opacity: any;
+    x: any;
 }
 
 export function ShowcaseText({ opacity, x }: ShowcaseTextProps) {
