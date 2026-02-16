@@ -6,7 +6,7 @@ import { ShowcaseText } from "./scroll-showcase-parts/ShowcaseText";
 import { useShowcaseAnimations } from "./scroll-showcase-parts/useShowcaseAnimations";
 
 export function ScrollShowcase() {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLElement>(null);
     const { width, height, borderRadius, x, y, textOpacity, textX } = useShowcaseAnimations(containerRef);
 
     return (
