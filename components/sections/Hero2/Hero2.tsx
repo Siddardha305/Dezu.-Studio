@@ -25,7 +25,7 @@ export function Hero2() {
                 {/* 2. Text Component */}
                 <ShowcaseText
                     opacity={textOpacity}
-                    x={textX}
+                    x={textX as any}
                 />
 
             </div>
