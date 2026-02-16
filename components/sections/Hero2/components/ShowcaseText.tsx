@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 interface ShowcaseTextProps {
     opacity: MotionValue<number>;
-    x: MotionValue<string | number>;
+    x: MotionValue<string>;
 }
 
 export function ShowcaseText({ opacity, x }: ShowcaseTextProps) {
