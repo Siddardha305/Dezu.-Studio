@@ -1,0 +1,34 @@
+"use client";
+
+import { useRef } from "react";
+import { ShowcaseVideo } from "./components/ShowcaseVideo";
+import { ShowcaseText } from "./components/ShowcaseText";
+import { useHero2Animations } from "./components/useHero2Animations";
+
+export function Hero2() {
+    const containerRef = useRef<HTMLElement>(null);
+    const { width, height, borderRadius, x, y, textOpacity, textX } = useHero2Animations(containerRef);
+
+    return (
+        <section ref={containerRef} className="relative h-[400vh] bg-[#1a0b2e]">
+            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-[#1a0b2e]">
+
+                {/* 1. Video Box Component */}
+                <ShowcaseVideo
+                    width={width}
+                    height={height}
+                    borderRadius={borderRadius}
+                    x={x}
+                    y={y}
+                />
+
+                {/* 2. Text Component */}
+                <ShowcaseText
+                    opacity={textOpacity}
+                    x={textX}
+                />
+
+            </div>
+        </section>
+    );
+}
