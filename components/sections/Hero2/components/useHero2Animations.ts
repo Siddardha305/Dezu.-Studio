@@ -3,7 +3,7 @@
 import { useScroll, useTransform, MotionValue } from "framer-motion";
 import { RefObject } from "react";
 
-export function useHero2Animations(containerRef: RefObject<HTMLElement>) {
+export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) {
     // 1. Entry Progress: Tracks the section entering the viewport (Bottom -> Top)
     const { scrollYProgress: entryProgress } = useScroll({
         target: containerRef,
