@@ -17,7 +17,7 @@ export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) 
 
     const width = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]: [number, number]) => {
+        ([e, p]: any) => {
             if (e < 1) return `${70 + e * 30}%`;
             if (p < 0.2) return "100%";
             if (p > 0.7) return "25%";
@@ -28,7 +28,7 @@ export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) 
 
     const height = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]: [number, number]) => {
+        ([e, p]: any) => {
             if (e < 1) return `${50 + e * 50}vh`;
             if (p < 0.2) return "100vh";
             if (p > 0.7) return "35vh";
@@ -39,7 +39,7 @@ export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) 
 
     const borderRadius = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]: [number, number]) => {
+        ([e, p]: any) => {
             if (e < 1) return `${2 * (1 - e)}rem`;
             if (p < 0.2) return "0rem";
             if (p > 0.7) return "2rem";
@@ -50,7 +50,7 @@ export function useHero2Animations(containerRef: RefObject<HTMLElement | null>) 
 
     const x = useTransform(
         [entryProgress, pinnedProgress],
-        ([e, p]: [number, number]) => {
+        ([e, p]: any) => {
             if (e < 1) return "0vw";
             if (p < 0.2) return "0vw";
             if (p > 0.7) return "-25vw";
