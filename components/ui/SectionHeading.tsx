@@ -28,7 +28,7 @@ const wordVariants = {
         y: "0%",
         transition: {
             duration: 0.8,
-            ease: [0.2, 0.65, 0.3, 0.9],
+            ease: [0.22, 1, 0.36, 1] as const,
         },
     },
 };
